@@ -16,7 +16,7 @@ public class SMOSmAlertPackage implements ReactPackage {
       return Arrays.<NativeModule>asList(new SMOSmAlertModule(reactContext));
     }
 
-    @Override
+//    @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
       return Collections.emptyList();
     }
