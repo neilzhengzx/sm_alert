@@ -81,13 +81,14 @@ public class SMOSmAlertModule extends ReactContextBaseJavaModule{
               mCallBack = null;
             }
           }
-        }).setCancelable(true);
+        }).setCancelable(false);
         alertView.setOnDismissListener(new OnDismissListener(){
           public void onDismiss(Object o){
             if(mCallBack != null){
               WritableMap response = Arguments.createMap();
               response.putInt("index", -1);
               mCallBack.invoke(response);
+              mCallBack = null;
             }
           }
         });
@@ -151,6 +152,7 @@ public class SMOSmAlertModule extends ReactContextBaseJavaModule{
               WritableMap response = Arguments.createMap();
               response.putInt("index", -1);
               mCallBack.invoke(response);
+              mCallBack = null;
             }
           }
         });
