@@ -21,6 +21,7 @@ public class SMOSmAlertModule extends ReactContextBaseJavaModule{
 
   private final ReactApplicationContext reactContext;
   private Callback mCallBack;
+  private int mEndPosition = -1;
 
   public SMOSmAlertModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -70,15 +71,13 @@ public class SMOSmAlertModule extends ReactContextBaseJavaModule{
           throw new JSApplicationIllegalArgumentException("Tried to open a Alert view while not attached to an Activity");
         }
 
+        mEndPosition = -1;
         AlertView alertView = new AlertView(_title, _message, null, null,
                 alertButtons,
                 activity, AlertView.Style.Alert, new OnItemClickListener(){
           public void onItemClick(Object o,int position){
             if(mCallBack != null){
-              WritableMap response = Arguments.createMap();
-              response.putInt("index", position);
-              mCallBack.invoke(response);
-              mCallBack = null;
+              mEndPosition = position;
             }
           }
         }).setCancelable(false);
@@ -86,7 +85,7 @@ public class SMOSmAlertModule extends ReactContextBaseJavaModule{
           public void onDismiss(Object o){
             if(mCallBack != null){
               WritableMap response = Arguments.createMap();
-              response.putInt("index", -1);
+              response.putInt("index", mEndPosition);
               mCallBack.invoke(response);
               mCallBack = null;
             }
@@ -134,15 +133,13 @@ public class SMOSmAlertModule extends ReactContextBaseJavaModule{
         if (activity == null) {
           throw new JSApplicationIllegalArgumentException("Tried to open a Alert view while not attached to an Activity");
         }
+        mEndPosition = -1;
         AlertView alertView = new AlertView(_title, _message, "取消", null,
                 alertButtons,
                 activity, AlertView.Style.ActionSheet, new OnItemClickListener(){
           public void onItemClick(Object o,int position){
             if(mCallBack != null){
-              WritableMap response = Arguments.createMap();
-              response.putInt("index", position);
-              mCallBack.invoke(response);
-              mCallBack = null;
+              mEndPosition = position;
             }
           }
         }).setCancelable(true);
@@ -150,7 +147,7 @@ public class SMOSmAlertModule extends ReactContextBaseJavaModule{
           public void onDismiss(Object o){
             if(mCallBack != null){
               WritableMap response = Arguments.createMap();
-              response.putInt("index", -1);
+              response.putInt("index", mEndPosition);
               mCallBack.invoke(response);
               mCallBack = null;
             }
