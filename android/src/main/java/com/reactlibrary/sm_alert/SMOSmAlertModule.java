@@ -3,9 +3,9 @@ package com.reactlibrary.sm_alert;
 
 import android.app.Activity;
 
-import com.bigkoo.alertview.AlertView;
-import com.bigkoo.alertview.OnDismissListener;
-import com.bigkoo.alertview.OnItemClickListener;
+import com.smobiler.alertview.AlertView;
+import com.smobiler.alertview.OnDismissListener;
+import com.smobiler.alertview.OnItemClickListener;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.JSApplicationIllegalArgumentException;
@@ -32,8 +32,8 @@ public class SMOSmAlertModule extends ReactContextBaseJavaModule{
   public String getName() {
     return "SMOSmAlert";
   }
-  
-  
+
+
   @ReactMethod
   public void alertDefault(ReadableMap params, Callback callback){
     mCallBack = callback;
@@ -69,6 +69,10 @@ public class SMOSmAlertModule extends ReactContextBaseJavaModule{
         Activity activity = getCurrentActivity();
         if (activity == null) {
           throw new JSApplicationIllegalArgumentException("Tried to open a Alert view while not attached to an Activity");
+        }
+
+        if(_title != null && _title.isEmpty()){
+          _title = null;
         }
 
         mEndPosition = -1;

@@ -24,7 +24,7 @@ android {
     lintOptions {
         abortOnError false
     }
-    
+
     buildTypes {
         release {
             consumerProguardFiles  getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -38,6 +38,5 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    compile 'com.bigkoo:alertview:1.0.3'
+    compile 'com.smobiler:alertview:1.0.4'
 }
-  
