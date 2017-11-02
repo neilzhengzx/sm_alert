@@ -16,4 +16,4 @@
 #   public *;
 #}
 
--keep class com.bigkoo.alertview.** { *; }
+-keep class com.smobiler.alertview.** { *; }
