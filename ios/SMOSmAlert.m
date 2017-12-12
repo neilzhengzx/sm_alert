@@ -19,8 +19,8 @@ RCT_EXPORT_METHOD(alertDefault:(NSDictionary *)params callback:(RCTResponseSende
     
     NSMutableArray *buttons = params[@"buttons"];
     NSString* _title = [params objectForKey:@"title"];
+    if(!_title || _title.length == 0) _title = @"提示";
     NSString* _message = [params objectForKey:@"message"];
-    
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:_title message:_message preferredStyle:UIAlertControllerStyleAlert];
     if(buttons.count == 0){

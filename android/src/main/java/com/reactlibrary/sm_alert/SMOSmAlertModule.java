@@ -48,9 +48,11 @@ public class SMOSmAlertModule extends ReactContextBaseJavaModule{
         String _message = null;
         if (Params.hasKey("title")) {
           _title = Params.getString("title");
+          if(_title.length() == 0)_title = "提示";
         }
         if (Params.hasKey("message")) {
           _message = Params.getString("message");
+          if(_message.length() == 0)_message = null;
         }
         if (Params.hasKey("buttons")) {
           buttons = Params.getArray("buttons");
