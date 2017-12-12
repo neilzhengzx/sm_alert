@@ -44,7 +44,7 @@ public class SMOSmAlertModule extends ReactContextBaseJavaModule{
       public void run() {
 
         ReadableArray buttons = Arguments.createArray();
-        String _title = null;
+        String _title = "提示";
         String _message = null;
         if (Params.hasKey("title")) {
           _title = Params.getString("title");
