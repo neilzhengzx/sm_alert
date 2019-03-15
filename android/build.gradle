@@ -30,6 +30,6 @@ repositories {
 }
 
 dependencies {
-    compile 'com.facebook.react:react-native:+'
-    compile 'com.smobiler:alertview:1.0.4'
+    compileOnly 'com.facebook.react:react-native:+'
+    implementation 'com.smobiler:alertview:1.0.4'
 }
